@@ -13,10 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install JFrog CLI
-        run: |
-          curl -fL https://getcli.jfrog.io | sh
-          sudo mv jfrog /usr/local/bin/
+      - name: Set up JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v2
+        with:
+          version: 'latest'
 
       - name: Configure JFrog CLI with username and password
         env:
@@ -24,7 +24,7 @@ jobs:
           JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
           JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
         run: |
-          jfrog rt config --url=$JFROG_URL --user=$JFROG_USERNAME --password=$JFROG_PASSWORD
+          jfrog config add artifactory --url=$JFROG_URL --user=$JFROG_USERNAME --password=$JFROG_PASSWORD
 
       - name: Upload artifact to Artifactory
         run: |
