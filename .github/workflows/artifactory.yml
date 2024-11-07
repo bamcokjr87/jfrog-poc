@@ -28,4 +28,4 @@ jobs:
 
       - name: Upload artifact to Artifactory
         run: |
-          jfrog rt upload "path/to/your/artifact.zip" "your-repo-name/path/in/artifactory/"
+          jfrog rt upload "terraform_1.9.6_windows_386.zip" "your-repo-name/path/in/artifactory/"
