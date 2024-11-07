@@ -3,7 +3,7 @@ name: Publish to JFrog Artifactory
 on:
   push:
     branches:
-      - main  # Only run on pushes to the main branch
+      - main
 
 jobs:
   publish:
@@ -18,13 +18,13 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Configure JFrog CLI
+      - name: Configure JFrog CLI with username and password
         env:
           JFROG_URL: ${{ secrets.JFROG_URL }}
           JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
           JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
         run: |
-          jfrog rt config --url=$JFROG_URL --user=$JFROG_USERNAME --password=$JFROG_PASSWORD --interactive=false
+          jfrog rt config --url=$JFROG_URL --user=$JFROG_USERNAME --password=$JFROG_PASSWORD
 
       - name: Upload artifact to Artifactory
         run: |
