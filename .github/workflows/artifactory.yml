@@ -29,4 +29,4 @@ jobs:
 
       - name: Upload artifact to Artifactory
         run: |
-          jfrog rt upload "terraform_1.9.6_windows_386.zip" "https://ecoshine.jfrog.io/artifactory/api/generic/terraform_1.9.6_windows_386"
+          jfrog rt upload "terraform_1.9.6_windows_386.zip" "https://ecoshine.jfrog.io/artifactory/api/generic/terraform_1.9.6_windows_386/jfrogpoc"
