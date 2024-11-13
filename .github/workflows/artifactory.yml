@@ -8,7 +8,7 @@ on:
 
 jobs:
   publish:
-    runs-on: arc-runner-set-aks
+    runs-on: arc-runner-set
 
     steps:
       - name: Checkout code
